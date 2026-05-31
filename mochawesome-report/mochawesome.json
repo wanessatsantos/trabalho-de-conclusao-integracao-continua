@@ -1,0 +1,157 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-05-31T23:01:12.415Z",
+    "end": "2026-05-31T23:01:12.418Z",
+    "duration": 3,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "4671edbc-8388-4fd4-b711-9df9b41e7626",
+      "title": "",
+      "fullFile": "/Users/wanessatelesdossantos/Documents/Aulas_pos/servico-de-pagamento/test/servicoDePagamento.test.js",
+      "file": "/test/servicoDePagamento.test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "bf3a95b8-a2b7-401e-a352-58a683fd7597",
+          "title": "Classe de Servico de Pagamentos",
+          "fullFile": "/Users/wanessatelesdossantos/Documents/Aulas_pos/servico-de-pagamento/test/servicoDePagamento.test.js",
+          "file": "/test/servicoDePagamento.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve registrar um pagamento com categoria padrão quando o valor é igual ou menor que 100",
+              "fullTitle": "Classe de Servico de Pagamentos Deve registrar um pagamento com categoria padrão quando o valor é igual ou menor que 100",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Arrange\nconst servicoDePagamentoEspecializado = new servicoDePagamento()\n\n//Act\nservicoDePagamentoEspecializado.pagar('0987-7656-3475', 'Amazon', 58.00)\nconst ultimoPagamento = servicoDePagamentoEspecializado.consultarUltimoPagamento()\n//Assert\nassert.equal(ultimoPagamento.codigoDeBarras, '0987-7656-3475');\nassert.equal(ultimoPagamento.empresa, 'Amazon');\nassert.equal(ultimoPagamento.valor, 58.00);\nassert.equal(ultimoPagamento.categoria, 'padrao');",
+              "err": {},
+              "uuid": "2a647c2a-0e50-48ce-8e30-331f95396731",
+              "parentUUID": "bf3a95b8-a2b7-401e-a352-58a683fd7597",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve registrar um pagamento com categoria cara quando o valor é maior que 100",
+              "fullTitle": "Classe de Servico de Pagamentos Deve registrar um pagamento com categoria cara quando o valor é maior que 100",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Arrange\nconst servicoDePagamentoEspecializado = new servicoDePagamento()\n\n//Act\nservicoDePagamentoEspecializado.pagar('0987-7656-3475', 'Amazon', 100.01)\nconst ultimoPagamento = servicoDePagamentoEspecializado.consultarUltimoPagamento()\n//Assert\nassert.equal(ultimoPagamento.codigoDeBarras, '0987-7656-3475');\nassert.equal(ultimoPagamento.empresa, 'Amazon');\nassert.equal(ultimoPagamento.valor, 100.01);\nassert.equal(ultimoPagamento.categoria, 'cara');",
+              "err": {},
+              "uuid": "2f1459d7-18ec-4d5d-bfbb-18008144bbe1",
+              "parentUUID": "bf3a95b8-a2b7-401e-a352-58a683fd7597",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve retornar uma mensagem de erro quando não há pagamentos realizados",
+              "fullTitle": "Classe de Servico de Pagamentos Deve retornar uma mensagem de erro quando não há pagamentos realizados",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Arrange\nconst servicoDePagamentoEspecializado = new servicoDePagamento()\n\n//Act\nconst ultimoPagamento = servicoDePagamentoEspecializado.consultarUltimoPagamento()\n//Assert\nassert.equal(ultimoPagamento, 'Nenhum pagamento foi realizado ainda');",
+              "err": {},
+              "uuid": "b8d577e5-0548-458e-ac57-d5bd8164b902",
+              "parentUUID": "bf3a95b8-a2b7-401e-a352-58a683fd7597",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve retornar o último pagamento realizado",
+              "fullTitle": "Classe de Servico de Pagamentos Deve retornar o último pagamento realizado",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Arrange\nconst servicoDePagamentoEspecializado = new servicoDePagamento()\n\n//Act\nservicoDePagamentoEspecializado.pagar('0987-7656-3475', 'Amazon', 100.01)\nservicoDePagamentoEspecializado.pagar('0975-7688-3541', 'Netflix', 1200.00)\nconst ultimoPagamento = servicoDePagamentoEspecializado.consultarUltimoPagamento()\n//Assert\nassert.equal(ultimoPagamento.codigoDeBarras, '0975-7688-3541');\nassert.equal(ultimoPagamento.empresa, 'Netflix');\nassert.equal(ultimoPagamento.valor, 1200.00);\nassert.equal(ultimoPagamento.categoria, 'cara');",
+              "err": {},
+              "uuid": "0edefc73-ee14-45b9-b725-fbb847963dae",
+              "parentUUID": "bf3a95b8-a2b7-401e-a352-58a683fd7597",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2a647c2a-0e50-48ce-8e30-331f95396731",
+            "2f1459d7-18ec-4d5d-bfbb-18008144bbe1",
+            "b8d577e5-0548-458e-ac57-d5bd8164b902",
+            "0edefc73-ee14-45b9-b725-fbb847963dae"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.6"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.2"
+    }
+  }
+}
