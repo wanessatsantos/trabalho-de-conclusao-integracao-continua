@@ -1,4 +1,4 @@
-# Trabalho de conclusão da displina de Integração Contínua utilizando GitHub Actions
+# Trabalho de conclusão da disciplina de Integração Contínua utilizando GitHub Actions
 
 Este projeto demonstra a implementação de uma pipeline automatizada de Integração Contínua (CI) utilizando o **GitHub Actions** para um projeto desenvolvido em **Node.js** com testes automatizados utilizando o framework **Mocha** e geração de relatórios com **Mochawesome**. Foi utilizado o trabalho de conclusão da disciplina do professor **Júlio de Lima** de **Serviço de Pagamento** 
 
