@@ -1,0 +1,57 @@
+#Pipelines para o projeto de serviço de pagamentos
+
+#CI de Execução Completa - Serviço de Pagamentos
+
+#Nome da pipeline
+name: 'Pipeline de Integração Contínua Completa - Serviço de Pagamentos'
+
+#Definindo os gatilhos para cada execução
+
+on:
+    #Execução por push a cada commit enviado para a branch main
+    push:
+        branches:
+            - main #Irá rodar a pipeline a cada commit enviado para a branch main
+
+    #Execução manual via interface do GitHub
+    workflow_dispatch: #Permite que a pipeline seja executada manualmente a partir da interface do GitHub
+
+    #Execução agendada (schedule) para rodar a cada 5 minutos
+    schedule:
+        - cron: '*/5 * * * *'
+
+#Definindo os jobs da pipeline
+jobs:
+    testes:
+        #Definindo em qual ambiente o job irá rodar
+        runs-on: ubuntu-latest #O job irá rodar em um ambiente Ubuntu atualizado
+        #Definindo as etapas do job
+        steps:
+            #Clonando o código do repositório
+            - name: Clonando o Projeto
+              uses: actions/checkout@v4 
+
+            #Instalando o Node.js
+
+            - name: Instalando o Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: '24x'
+            
+            #Instalando as dependencias do projeto
+
+            - name: Instalando as dependencias do projeto
+              run: npm ci
+            
+            #Executar os testes unitários do projeto 
+            - name: Executar os testes unitários do projeto
+              run: npm test
+            
+            #Salvando e publicando o relatório no Artefacts do GitHub
+            - name: Salvar relatório de testes no Artefacts do GitHub
+              uses: actions/upload-artifact@v4  
+              #Garante que o relatório seja salvo mesmo que os testes falhem
+              if: always() 
+              with:
+                name: relatorio-de-testes
+                path: test/reports 
